@@ -1,0 +1,27 @@
+.failed {
+  background-color: #b4dfe7;
+  min-height: 600px;
+  width: 100%;
+}
+.success {
+  background-color: #b4dfe7;
+  height: 600px;
+  width: 100%;
+}
+h4 {
+  color: white;
+  font-size: 30px;
+}
+.failed a {
+  color: red;
+}
+.task {
+  max-width: 750px;
+}
+th {
+  cursor: pointer;
+}
+svg {
+  color: red;
+  cursor: pointer;
+}

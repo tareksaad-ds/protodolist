@@ -1,0 +1,22 @@
+$mainColor: #b4dfe7;
+$typeColor: #f28341;
+
+.navbar {
+  background-color: $mainColor;
+}
+.navbar-light .navbar-brand {
+  color: $typeColor !important;
+  font-size: 30px;
+}
+.nav-link {
+  color: $typeColor;
+  font-size: 22px;
+  float: right;
+}
+.nav-link:hover {
+  color: #384259;
+  font-size: 22px;
+}
+.responsive {
+  float: right;
+}

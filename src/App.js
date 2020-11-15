@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import LandingPage from "./components/LandingPage";
+import NavBar from "./components/NavBar";
+import "bootstrap/dist/css/bootstrap.css";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
+import "react-toastify/dist/ReactToastify.css";
+import Dash from "./components/Dashboard/Dash";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Router>
+          <NavBar />
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/dashboard" component={Dash} />
+          </Switch>
+        </Router>
+      </div>
+    </Provider>
   );
 }
 
