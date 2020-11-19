@@ -32,6 +32,7 @@ function Dash() {
 
   return (
     <div>
+      {/* If User is true push to Dashboard */}
       {user ? (
         <div className="success">
           <Form onSubmit={sendTask} className="task container">
@@ -59,15 +60,13 @@ function Dash() {
                   <option value="Other">Other</option>
                 </Form.Control>
               </Form.Group>
-              {/* <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Very Important" />
-              </Form.Group> */}
 
               <Button type="submit" variant="warning">
                 Add Task
               </Button>
             </FormGroup>
           </Form>
+          {/* Loop for get tasks list */}
           <Card>
             <Card.Header>Your Dashoard</Card.Header>
 
@@ -78,6 +77,7 @@ function Dash() {
           </Card>
         </div>
       ) : (
+        // Failed Auth
         <div className="failed">
           <h4>
             Failed Authentication please <Link to="/login">login</Link>

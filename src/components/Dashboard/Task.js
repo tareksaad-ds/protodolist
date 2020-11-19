@@ -17,6 +17,7 @@ function Task(props) {
     dispatch(finishTask(tasky));
   };
   return (
+    // The Tasks List (LOOP in the DASH.JS)
     <Row>
       <Col>
         <Card.Body className="taskbody">
