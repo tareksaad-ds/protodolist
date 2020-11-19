@@ -18,41 +18,43 @@ function Task(props) {
   };
   return (
     // The Tasks List (LOOP in the DASH.JS)
-    <Row>
-      <Col>
-        <Card.Body className="taskbody">
-          <Row>
-            <Col>
-              {tasky.progress ? (
-                <Badge variant="success">Completed</Badge>
-              ) : (
-                <Badge variant="danger">Not Completed</Badge>
-              )}
-            </Col>
-            <Col style={{ display: "-webkit-inline-box" }}>
-              <Form.Group className="taskcheck">
-                <Form.Check
-                  type="checkbox"
-                  checked={tasky.progress}
-                  onChange={completedTask}
-                  aria-label="option 1"
-                />
-              </Form.Group>
+    <div className="container">
+      <Row>
+        <Col>
+          <Card.Body className="taskbody">
+            <Row>
+              <Col>
+                {tasky.progress ? (
+                  <Badge variant="success">Completed</Badge>
+                ) : (
+                  <Badge variant="danger">Not Completed</Badge>
+                )}
+              </Col>
+              <Col style={{ display: "-webkit-inline-box" }}>
+                <Form.Group className="taskcheck">
+                  <Form.Check
+                    type="checkbox"
+                    checked={tasky.progress}
+                    onChange={completedTask}
+                    aria-label="option 1"
+                  />
+                </Form.Group>
 
-              <h5>{tasky.list}</h5>
-            </Col>
-            <Col>
-              <span>{tasky.category}</span>
-            </Col>
-            <Col>
-              <button className="btn" onClick={deleteTask}>
-                <BsFillTrashFill />
-              </button>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Col>
-    </Row>
+                <h5>{tasky.list}</h5>
+              </Col>
+              <Col>
+                <span className="type">{tasky.category}</span>
+              </Col>
+              <Col>
+                <button className="btn" onClick={deleteTask}>
+                  <BsFillTrashFill />
+                </button>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Col>
+      </Row>
+    </div>
   );
 }
 

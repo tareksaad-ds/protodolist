@@ -13,3 +13,12 @@ h5 {
 div.form-check {
   font-size: 16px;
 }
+
+@media only screen and (max-width: 600px) {
+  h5 {
+    font-size: 13px !important;
+  }
+  span.type {
+    font-size: 12px !important;
+  }
+}

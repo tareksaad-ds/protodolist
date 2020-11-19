@@ -5,7 +5,8 @@ import {
   Form,
   FormControl,
   FormGroup,
-  FormLabel,
+  Row,
+  Col,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -34,36 +35,43 @@ function Dash() {
     <div>
       {/* If User is true push to Dashboard */}
       {user ? (
-        <div className="success">
+        <div className=" success">
           <Form onSubmit={sendTask} className="task container">
             <FormGroup controlId="formGroupTask">
-              <FormLabel>Add Task</FormLabel>
-              <FormControl
-                name="name"
-                placeholer="Enter your task"
-                type="text"
-                value={todo}
-                onChange={(e) => setTodo(e.target.value)}
-              />
-              <Form.Group controlId="formGridCategory">
-                <Form.Label>Category</Form.Label>
-                <Form.Control
-                  name="category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  as="select"
-                >
-                  <option value="">Add Category..</option>
-                  <option value="Work">Work</option>
-                  <option value="Fitness">Fitness</option>
-                  <option value="Shopping">Shopping</option>
-                  <option value="Other">Other</option>
-                </Form.Control>
-              </Form.Group>
-
-              <Button type="submit" variant="warning">
-                Add Task
-              </Button>
+              <div className="container">
+                <Row>
+                  <Col sm={8}>
+                    <FormControl
+                      name="name"
+                      placeholder="Enter your task"
+                      type="text"
+                      value={todo}
+                      onChange={(e) => setTodo(e.target.value)}
+                    />
+                  </Col>
+                  <Col sm={4}>
+                    <Form.Control
+                      name="category"
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
+                      as="select"
+                    >
+                      <option value="">Add Category..</option>
+                      <option value="Work">Work</option>
+                      <option value="Fitness">Fitness</option>
+                      <option value="Shopping">Shopping</option>
+                      <option value="Other">Other</option>
+                    </Form.Control>
+                    <Button
+                      style={{ marginLeft: "20px" }}
+                      type="submit"
+                      variant="warning"
+                    >
+                      +{" "}
+                    </Button>
+                  </Col>
+                </Row>
+              </div>
             </FormGroup>
           </Form>
           {/* Loop for get tasks list */}
