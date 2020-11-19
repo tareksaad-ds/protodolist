@@ -1,8 +1,9 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Badge, Card, Col, Form, Row } from "react-bootstrap";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { finishTask, removeTask } from "../../actions/taskActions";
+import "./Task.scss";
 
 function Task(props) {
   const { tasky } = props;
@@ -16,25 +17,41 @@ function Task(props) {
     dispatch(finishTask(tasky));
   };
   return (
-    <tbody>
-      <tr>
-        <td>{tasky.list}</td>
-        <td>{tasky.category}</td>
-        <td>
-          <BsFillTrashFill onClick={deleteTask} />
-        </td>
-        <td>
-          <Form.Group id="formGridCheckbox">
-            <Form.Check
-              checked={tasky.progress}
-              type="checkbox"
-              label="Completed"
-              onChange={completedTask}
-            />
-          </Form.Group>
-        </td>
-      </tr>
-    </tbody>
+    <Row>
+      <Col>
+        <Card.Body className="taskbody">
+          <Row>
+            <Col>
+              {tasky.progress ? (
+                <Badge variant="success">Completed</Badge>
+              ) : (
+                <Badge variant="danger">Not Completed</Badge>
+              )}
+            </Col>
+            <Col style={{ display: "-webkit-inline-box" }}>
+              <Form.Group className="taskcheck">
+                <Form.Check
+                  type="checkbox"
+                  checked={tasky.progress}
+                  onChange={completedTask}
+                  aria-label="option 1"
+                />
+              </Form.Group>
+
+              <h5>{tasky.list}</h5>
+            </Col>
+            <Col>
+              <span>{tasky.category}</span>
+            </Col>
+            <Col>
+              <button className="btn" onClick={deleteTask}>
+                <BsFillTrashFill />
+              </button>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Col>
+    </Row>
   );
 }
 

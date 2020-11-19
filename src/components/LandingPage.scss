@@ -14,3 +14,8 @@ img {
 span {
   color: #f28341;
 }
+@media (max-width: 970px) {
+  .top-left {
+    display: none;
+  }
+}

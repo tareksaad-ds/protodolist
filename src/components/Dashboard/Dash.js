@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
   Button,
+  Card,
   Form,
   FormControl,
   FormGroup,
   FormLabel,
-  Table,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -68,21 +68,14 @@ function Dash() {
               </Button>
             </FormGroup>
           </Form>
-          <Table striped bordered hover size="sm">
-            <thead>
-              <tr>
-                <th>Task Name</th>
-                <th>Category</th>
-                <th>Delete</th>
-                <th>Progress</th>
-              </tr>
-            </thead>
+          <Card>
+            <Card.Header>Your Dashoard</Card.Header>
 
             {allTasks &&
               allTasks.map((tasky) => {
                 return <Task key={tasky._id} tasky={tasky} />;
               })}
-          </Table>
+          </Card>
         </div>
       ) : (
         <div className="failed">
