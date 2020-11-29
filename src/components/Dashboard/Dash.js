@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useFormik } from "formik";
+import React, { useEffect } from "react";
 import {
   Button,
   Card,
@@ -16,15 +17,22 @@ import Task from "./Task";
 
 function Dash() {
   const user = localStorage.getItem("userId");
-  const [todo, setTodo] = useState("");
-  const [category, setCategory] = useState("");
-  const [progress, _] = useState(false);
+  const formik = useFormik({
+    initialValues: {
+      todo: "",
+      category: "",
+      progress: "false",
+    },
+    onSubmit: (values) => {
+      dispatch(addTask(task));
+    },
+  });
+
+  const todo = formik.values.todo;
+  const category = formik.values.category;
+  const progress = formik.values.progress;
   const task = { todo, category, user, progress };
   const dispatch = useDispatch();
-  const sendTask = (e) => {
-    e.preventDefault();
-    dispatch(addTask(task));
-  };
   useEffect(() => {
     const id = localStorage.getItem("userId");
     dispatch(getTasks(id));
@@ -36,24 +44,26 @@ function Dash() {
       {/* If User is true push to Dashboard */}
       {user ? (
         <div className=" success">
-          <Form onSubmit={sendTask} className="task container">
+          <Form onSubmit={formik.handleSubmit} className="task container">
             <FormGroup controlId="formGroupTask">
               <div className="container">
                 <Row>
                   <Col sm={8}>
                     <FormControl
-                      name="name"
+                      name="todo"
                       placeholder="Enter your task"
                       type="text"
-                      value={todo}
-                      onChange={(e) => setTodo(e.target.value)}
+                      id="todo"
+                      value={formik.values.todo}
+                      onChange={formik.handleChange}
                     />
                   </Col>
                   <Col sm={4}>
                     <Form.Control
                       name="category"
-                      value={category}
-                      onChange={(e) => setCategory(e.target.value)}
+                      value={formik.values.category}
+                      id="category"
+                      onChange={formik.handleChange}
                       as="select"
                     >
                       <option value="">Add Category..</option>
